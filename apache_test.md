@@ -2,11 +2,11 @@
 
 # С балансировкой (без кеширования)
 
-This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>  
 
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/  
 
-Licensed to The Apache Software Foundation, http://www.apache.org/
+Licensed to The Apache Software Foundation, http://www.apache.org/  
 
 Benchmarking 127.0.0.1 (be patient)
 
