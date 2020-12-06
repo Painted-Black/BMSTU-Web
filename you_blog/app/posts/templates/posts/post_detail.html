@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ post.title }}
+{% endblock %}
+
+{% block content_title %}
+	{{ post.title }}
+{% endblock %}
+
+{% block content %}
+	<div class="tags">
+		{% for tag in tags %}
+			<a href="{{ url_for('posts.tag_detail', slug=tag.slug) }}"><span class="badge badge-primary"> {{ tag.name }} </span></a>
+		{% endfor %}
+	</div>
+	<div class="main-content">
+		{{ post.body }}
+	</div>
+
+	<hr>
+  <h3>Комментарии</h3>
+  {% if post.comments %}
+    {% for comment in post.comments %}
+       <p>{{ comment.body }}</p>
+       <p><strong>{{ comment.name }}</strong> <small>в {{ comment.created.strftime('%H:%M %d-%m-%Y') }}</small></p>
+    {% endfor %}
+  {% endif %}
+ 
+
+{% endblock %}
+
+
