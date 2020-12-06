@@ -37,7 +37,8 @@ IU7 WEB labs 2020, Ovchinnikova Anastasia, IU7-75
 
 ![er-diagram](https://git.iu7.bmstu.ru/oap17u728/iu7-web-labs/-/blob/master/diagrams/er.png)
 
-#Figma
+# Figma
+
 ![figma](https://www.figma.com/file/tfp2dtN6os5NWdo7X0ZuiA/Blog?node-id=2780%3A97)
 
 
