@@ -183,7 +183,7 @@
     <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
     <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
     <div class="app-desc">Version: 1.0.0</div>
-    <div class="app-desc">BasePath:/Painted-Black/BlogAPI/3.0</div>
+    
     <div class="license-info">All rights reserved</div>
     <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
   <h2>Access</h2>
@@ -193,34 +193,204 @@
 
   <h3>Table of Contents </h3>
   <div class="method-summary"></div>
-  <h4><a href="#Default">Default</a></h4>
+  <h4><a href="#Comments">Comments</a></h4>
   <ul>
-  <li><a href="#addComment"><code><span class="http-method">post</span> /blog/{slug}/comment</code></a></li>
-  <li><a href="#addCommentPage"><code><span class="http-method">get</span> /blog/{slug}/comment</code></a></li>
-  <li><a href="#addPost"><code><span class="http-method">post</span> /blog/new</code></a></li>
-  <li><a href="#addPostPage"><code><span class="http-method">get</span> /blog/new</code></a></li>
-  <li><a href="#blogDtail"><code><span class="http-method">get</span> /blog/{slug}</code></a></li>
-  <li><a href="#blogPage"><code><span class="http-method">get</span> /blog</code></a></li>
-  <li><a href="#editPost"><code><span class="http-method">post</span> /blog/{slug}/edit</code></a></li>
-  <li><a href="#editPostPage"><code><span class="http-method">get</span> /blog/{slug}/edit</code></a></li>
-  <li><a href="#tagDetail"><code><span class="http-method">get</span> /blog/tag/{slug}</code></a></li>
+  <li><a href="#commentsPost"><code><span class="http-method">post</span> /comments/</code></a></li>
   </ul>
-  <h4><a href="#MainPage">MainPage</a></h4>
+  <h4><a href="#Posts">Posts</a></h4>
   <ul>
-  <li><a href="#mainPage"><code><span class="http-method">get</span> /</code></a></li>
+  <li><a href="#postsFilterTagGet"><code><span class="http-method">get</span> /posts/filter/{tag}</code></a></li>
+  <li><a href="#postsGet"><code><span class="http-method">get</span> /posts/</code></a></li>
+  <li><a href="#postsIdDelete"><code><span class="http-method">delete</span> /posts/{id}</code></a></li>
+  <li><a href="#postsIdGet"><code><span class="http-method">get</span> /posts/{id}</code></a></li>
+  <li><a href="#postsIdPatch"><code><span class="http-method">patch</span> /posts/{id}</code></a></li>
+  <li><a href="#postsIdPut"><code><span class="http-method">put</span> /posts/{id}</code></a></li>
+  <li><a href="#postsPost"><code><span class="http-method">post</span> /posts/</code></a></li>
+  </ul>
+  <h4><a href="#Tags">Tags</a></h4>
+  <ul>
+  <li><a href="#tagsGet"><code><span class="http-method">get</span> /tags/</code></a></li>
   </ul>
 
-  <h1><a name="Default">Default</a></h1>
-  <div class="method"><a name="addComment"></a>
+  <h1><a name="Comments">Comments</a></h1>
+  <div class="method"><a name="commentsPost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /blog/{slug}/comment</code></pre></div>
-    <div class="method-summary"> (<span class="nickname">addComment</span>)</div>
-    <div class="method-notes">Add new comment to post</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /comments/</code></pre></div>
+    <div class="method-summary">Add new comment to post (<span class="nickname">commentsPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">post_id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>      <div class="param">name (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">body (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">created (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: date-time</div>      <div class="param">email (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Comment">Comment</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "post_id" : 0,
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "name" : "name",
+  "body" : "body",
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Ok
+        <a href="#Comment">Comment</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Posts">Posts</a></h1>
+  <div class="method"><a name="postsFilterTagGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/filter/{tag}</code></pre></div>
+    <div class="method-summary">Returns all posts market with tag identified by slug (<span class="nickname">postsFilterTagGet</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">slug (required)</div>
+      <div class="param">tag (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PostsList">PostsList</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+}, {
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Ok
+        <a href="#PostsList">PostsList</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/</code></pre></div>
+    <div class="method-summary">Returns all posts (<span class="nickname">postsGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PostsList">PostsList</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+}, {
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Ok
+        <a href="#PostsList">PostsList</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsIdDelete"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /posts/{id}</code></pre></div>
+    <div class="method-summary">Delete post (<span class="nickname">postsIdDelete</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
@@ -235,24 +405,24 @@
 
 
     <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
+    <h4 class="field-label">204</h4>
+    No content
         <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
+    <h4 class="field-label">500</h4>
+    Internal Server Error
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="addCommentPage"></a>
+  <div class="method"><a name="postsIdGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blog/{slug}/comment</code></pre></div>
-    <div class="method-summary">Returns form for adding comment to post (<span class="nickname">addCommentPage</span>)</div>
-    <div class="method-notes">Form to add a new comment to post</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/{id}</code></pre></div>
+    <div class="method-summary">Returns one post with id&#x3D;id (<span class="nickname">postsIdGet</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">slug (required)</div>
+      <div class="param">id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
@@ -261,90 +431,66 @@
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Post">Post</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Ok
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="addPost"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /blog/new</code></pre></div>
-    <div class="method-summary"> (<span class="nickname">addPost</span>)</div>
-    <div class="method-notes">Create new post</div>
-
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
+        <a href="#Post">Post</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="addPostPage"></a>
+  <div class="method"><a name="postsIdPatch"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blog/new</code></pre></div>
-    <div class="method-summary">Returns a form to create new post (<span class="nickname">addPostPage</span>)</div>
-    <div class="method-notes">Form to create a new post</div>
-
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="blogDtail"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blog/{slug}</code></pre></div>
-    <div class="method-summary">Returns post with slug slug (<span class="nickname">blogDtail</span>)</div>
-    <div class="method-notes">Access post detail</div>
+    <pre class="patch"><code class="huge"><span class="http-method">patch</span> /posts/{id}</code></pre></div>
+    <div class="method-summary">Edit one post (<span class="nickname">postsIdPatch</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">slug (required)</div>
+      <div class="param">id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
 
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">title (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">slug (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">body (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">created (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: date-time</div>    </div>  <!-- field-items -->
 
 
 
@@ -353,89 +499,41 @@
 
 
     <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
+    <h4 class="field-label">204</h4>
+    No content
         <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="blogPage"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blog</code></pre></div>
-    <div class="method-summary">Returns blog page (page with list of all posts) (<span class="nickname">blogPage</span>)</div>
-    <div class="method-notes">Access blog page</div>
-
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
+    <h4 class="field-label">500</h4>
+    Internal Server Error
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="editPost"></a>
+  <div class="method"><a name="postsIdPut"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /blog/{slug}/edit</code></pre></div>
-    <div class="method-summary"> (<span class="nickname">editPost</span>)</div>
-    <div class="method-notes">Edit post</div>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /posts/{id}</code></pre></div>
+    <div class="method-summary">Edit one post (<span class="nickname">postsIdPut</span>)</div>
+    <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">slug (required)</div>
+      <div class="param">id (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
 
 
 
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">302</h4>
-    Moved Temporarily
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="editPostPage"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blog/{slug}/edit</code></pre></div>
-    <div class="method-summary">Returns form for editing post (<span class="nickname">editPostPage</span>)</div>
-    <div class="method-notes">Form to edit post</div>
-
-    <h3 class="field-label">Path parameters</h3>
+    <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">slug (required)</div>
+      <div class="param">title (required)</div>
       
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
-
-
-
-
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">slug (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">body (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">created (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: date-time</div>    </div>  <!-- field-items -->
 
 
 
@@ -444,53 +542,78 @@
 
 
     <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
+    <h4 class="field-label">204</h4>
+    No content
         <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
+    <h4 class="field-label">500</h4>
+    Internal Server Error
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="tagDetail"></a>
+  <div class="method"><a name="postsPost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blog/tag/{slug}</code></pre></div>
-    <div class="method-summary">Returns tag with slug slug (<span class="nickname">tagDetail</span>)</div>
-    <div class="method-notes">Access slug detail</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /posts/</code></pre></div>
+    <div class="method-summary">Add new post (<span class="nickname">postsPost</span>)</div>
+    <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">slug (required)</div>
+      <div class="param">title (required)</div>
       
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">slug (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">body (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">created (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: date-time</div>    </div>  <!-- field-items -->
 
 
-
-
-
-
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Post">Post</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Ok
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
+        <a href="#Post">Post</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <h1><a name="MainPage">MainPage</a></h1>
-  <div class="method"><a name="mainPage"></a>
+  <h1><a name="Tags">Tags</a></h1>
+  <div class="method"><a name="tagsGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /</code></pre></div>
-    <div class="method-summary">Returns main page (<span class="nickname">mainPage</span>)</div>
-    <div class="method-notes">Access main page</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /tags/</code></pre></div>
+    <div class="method-summary">Returns all tags (<span class="nickname">tagsGet</span>)</div>
+    <div class="method-notes"></div>
 
 
 
@@ -498,17 +621,37 @@
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#TagsList">TagsList</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "name" : "name",
+  "slug" : "slug"
+}, {
+  "name" : "name",
+  "slug" : "slug"
+} ]</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Ok
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad request
+        <a href="#TagsList">TagsList</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
@@ -518,15 +661,53 @@
 
   <h3>Table of Contents</h3>
   <ol>
-    <li><a href="#Schema"><code>Schema</code></a></li>
+    <li><a href="#Comment"><code>Comment</code></a></li>
+    <li><a href="#Post"><code>Post</code></a></li>
+    <li><a href="#PostsList"><code>PostsList</code></a></li>
+    <li><a href="#Tag"><code>Tag</code></a></li>
+    <li><a href="#TagsList"><code>TagsList</code></a></li>
   </ol>
 
   <div class="model">
-    <h3><a name="Schema"><code>Schema</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="Comment"><code>Comment</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+      <div class="param">post_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">body (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Post"><code>Post</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">slug (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">body (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="PostsList"><code>PostsList</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Tag"><code>Tag</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">slug (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="TagsList"><code>TagsList</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
   </div>
   </body>
 </html>

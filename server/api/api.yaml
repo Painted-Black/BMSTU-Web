@@ -1,0 +1,331 @@
+openapi: "3.0.0"
+info:
+  version: '1.0.0'
+  title: MyBlog
+  description: Blog web labs
+tags:
+  - name: posts
+    description: "Posts info"
+  - name: comments
+    description: "Comments info"
+  - name: tags
+    description: "Tags info"
+
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        title:
+          type: string
+        slug:
+          type: string
+        body:
+          type: string
+        created:
+          type: string
+          format: date-time
+    PostsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Post'
+    Tag:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+    TagsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tag'
+    Comment:
+      type: object
+      properties:
+        post_id:
+          type: integer
+        name:
+          type: string
+        body:
+          type: string
+        created:
+          type: string
+          format: date-time
+        email:
+          type: string
+paths:
+  '/posts/':
+    get:
+      tags:
+        - posts
+      summary: "Returns all posts"
+      description: ""
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsList'
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - posts
+      #produces:
+      #  - application/json
+      #consumes:
+      #     - application/json
+      parameters:
+        - name: title
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: slug
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: body
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: created
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+      summary: "Add new post"
+      description: ""
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '500':
+          description: Internal Server Error
+  '/posts/{id}':
+    get:
+      tags:
+        - posts
+      parameters:
+        - name: "id"
+          in: path
+          required: true
+          schema:
+            type: integer
+      summary: "Returns one post with id=id"
+      description: ""
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '500':
+          description: Internal Server Error
+    put:
+      tags:
+        - posts
+      parameters:
+        - name: "id"
+          in: path
+          required: true
+          schema:
+            type: integer
+
+        - name: title
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: slug
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: body
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: created
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+      summary: "Edit one post"
+      description: ""
+      responses:
+        '204':
+          description: No content
+        '500':
+          description: Internal Server Error
+    patch:
+      tags:
+        - posts
+      parameters:
+        - name: "id"
+          in: path
+          required: true
+          schema:
+            type: integer
+
+        - name: title
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: slug
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: body
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: created
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+      summary: "Edit one post"
+      description: ""
+      responses:
+        '204':
+          description: No content
+        '500':
+          description: Internal Server Error
+    delete:
+      tags:
+        - posts
+      parameters:
+        - name: "id"
+          in: path
+          required: true
+          schema:
+            type: integer
+      summary: "Delete post"
+      description: ""
+      responses:
+        '204':
+          description: No content
+        '500':
+          description: Internal Server Error
+  '/posts/filter/{tag}':
+    get:
+      tags:
+        - posts
+      parameters:
+        - name: "tag"
+          in: path
+          required: true
+          schema:
+            type: string
+      summary: "Returns all posts market with tag identified by slug"
+      description: ""
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsList'
+        '500':
+          description: Internal Server Error
+ 
+  '/comments/':
+    post:
+      tags:
+        - comments
+      summary: "Add new comment to post"
+      description: ""
+      parameters:
+        - name: "post_id"
+          in: query
+          required: true
+          schema:
+            type: integer
+
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: body
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+
+        - name: created
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+            format: string
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '500':
+          description: Internal Server Error
+
+  '/tags/':
+    get:
+      tags:
+        - tags
+      summary: "Returns all tags"
+      description: ""
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsList'
+        '500':
+          description: Internal Server Error
+
