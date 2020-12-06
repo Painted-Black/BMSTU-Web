@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export NODE_PORT=3000
+npm start &
+export NODE_PORT=3001
+npm start &
+export NODE_PORT=3002
+npm start &
