@@ -30,12 +30,12 @@ IU7 WEB labs 2020, Ovchinnikova Anastasia, IU7-75
 
 # Usecase диаграмма
 
-![use-case-diagram](https://git.iu7.bmstu.ru/oap17u728/iu7-web-labs/-/blob/master/diagrams/usecase.png)
+![use-case-diagram](https://github.com/Painted-Black/BMSTU-Web/blob/main/server/diagrams/usecase.png)
 
 
 # ER-диаграмма сущностей
 
-![er-diagram](https://git.iu7.bmstu.ru/oap17u728/iu7-web-labs/-/blob/master/diagrams/er.png)
+![er-diagram](https://github.com/Painted-Black/BMSTU-Web/blob/main/server/diagrams/er.png)
 
 # Figma
 
