@@ -39,7 +39,7 @@ IU7 WEB labs 2020, Ovchinnikova Anastasia, IU7-75
 
 # Figma
 
-![figma](https://www.figma.com/file/tfp2dtN6os5NWdo7X0ZuiA/Blog)
+[figma](https://www.figma.com/file/tfp2dtN6os5NWdo7X0ZuiA/Blog)
 
 
 
