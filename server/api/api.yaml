@@ -149,21 +149,21 @@ paths:
 
         - name: title
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: string
 
         - name: slug
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: string
 
         - name: body
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: string
@@ -193,21 +193,21 @@ paths:
 
         - name: title
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: string
 
         - name: slug
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: string
 
         - name: body
           in: query
-          required: true
+          required: false
           schema:
             type: string
             format: string
@@ -328,4 +328,3 @@ paths:
                 $ref: '#/components/schemas/TagsList'
         '500':
           description: Internal Server Error
-
