@@ -183,7 +183,7 @@
     <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
     <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
     <div class="app-desc">Version: 1.0.0</div>
-    
+    <div class="app-desc">BasePath:/Painted-Black/BlogAPI/1.0.0</div>
     <div class="license-info">All rights reserved</div>
     <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
   <h2>Access</h2>
@@ -193,14 +193,10 @@
 
   <h3>Table of Contents </h3>
   <div class="method-summary"></div>
-  <h4><a href="#Comments">Comments</a></h4>
-  <ul>
-  <li><a href="#commentsPost"><code><span class="http-method">post</span> /comments/</code></a></li>
-  </ul>
   <h4><a href="#Posts">Posts</a></h4>
   <ul>
-  <li><a href="#postsFilterTagGet"><code><span class="http-method">get</span> /posts/filter/{tag}</code></a></li>
   <li><a href="#postsGet"><code><span class="http-method">get</span> /posts/</code></a></li>
+  <li><a href="#postsIdCommentsPost"><code><span class="http-method">post</span> /posts/{id}/comments</code></a></li>
   <li><a href="#postsIdDelete"><code><span class="http-method">delete</span> /posts/{id}</code></a></li>
   <li><a href="#postsIdGet"><code><span class="http-method">get</span> /posts/{id}</code></a></li>
   <li><a href="#postsIdPatch"><code><span class="http-method">patch</span> /posts/{id}</code></a></li>
@@ -212,12 +208,12 @@
   <li><a href="#tagsGet"><code><span class="http-method">get</span> /tags/</code></a></li>
   </ul>
 
-  <h1><a name="Comments">Comments</a></h1>
-  <div class="method"><a name="commentsPost"></a>
+  <h1><a name="Posts">Posts</a></h1>
+  <div class="method"><a name="postsGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /comments/</code></pre></div>
-    <div class="method-summary">Add new comment to post (<span class="nickname">commentsPost</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/</code></pre></div>
+    <div class="method-summary">Returns all posts (all posts fit to filter) (<span class="nickname">postsGet</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -226,9 +222,68 @@
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">post_id (required)</div>
+      <div class="param">tag (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  </div>      <div class="param">name (required)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PostsList">PostsList</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+}, {
+  "created" : "2000-01-23T04:56:07.000+00:00",
+  "title" : "title",
+  "body" : "body",
+  "slug" : "slug"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Ok
+        <a href="#PostsList">PostsList</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postsIdCommentsPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /posts/{id}/comments</code></pre></div>
+    <div class="method-summary">Add new comment to post (<span class="nickname">postsIdCommentsPost</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">name (required)</div>
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: string</div>      <div class="param">body (required)</div>
       
@@ -268,114 +323,6 @@
     <h4 class="field-label">200</h4>
     Ok
         <a href="#Comment">Comment</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <h1><a name="Posts">Posts</a></h1>
-  <div class="method"><a name="postsFilterTagGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/filter/{tag}</code></pre></div>
-    <div class="method-summary">Returns all posts market with tag identified by slug (<span class="nickname">postsFilterTagGet</span>)</div>
-    <div class="method-notes"></div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">tag (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#PostsList">PostsList</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
-  "created" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "body" : "body",
-  "slug" : "slug"
-}, {
-  "created" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "body" : "body",
-  "slug" : "slug"
-} ]</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
-        <a href="#PostsList">PostsList</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="postsGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /posts/</code></pre></div>
-    <div class="method-summary">Returns all posts (<span class="nickname">postsGet</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#PostsList">PostsList</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
-  "created" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "body" : "body",
-  "slug" : "slug"
-}, {
-  "created" : "2000-01-23T04:56:07.000+00:00",
-  "title" : "title",
-  "body" : "body",
-  "slug" : "slug"
-} ]</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Ok
-        <a href="#PostsList">PostsList</a>
     <h4 class="field-label">500</h4>
     Internal Server Error
         <a href="#"></a>
@@ -502,6 +449,9 @@
     <h4 class="field-label">204</h4>
     No content
         <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
     <h4 class="field-label">500</h4>
     Internal Server Error
         <a href="#"></a>
@@ -544,6 +494,9 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">204</h4>
     No content
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Bad Request
         <a href="#"></a>
     <h4 class="field-label">500</h4>
     Internal Server Error

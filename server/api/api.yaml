@@ -59,7 +59,14 @@ paths:
     get:
       tags:
         - posts
-      summary: "Returns all posts"
+      parameters:
+        - name: tag
+          in: query
+          required: false
+          schema:
+            type: string
+            format: string
+      summary: "Returns all posts (all posts fit to filter)"
       description: ""
       responses:
         '200':
@@ -181,6 +188,8 @@ paths:
           description: No content
         '500':
           description: Internal Server Error
+        '400':
+          description: Bad Request
     patch:
       tags:
         - posts
@@ -225,6 +234,8 @@ paths:
           description: No content
         '500':
           description: Internal Server Error
+        '400':
+          description: Bad Request
     delete:
       tags:
         - posts
@@ -241,37 +252,16 @@ paths:
           description: No content
         '500':
           description: Internal Server Error
-  '/posts/filter/{tag}':
-    get:
-      tags:
-        - posts
-      parameters:
-        - name: "tag"
-          in: path
-          required: true
-          schema:
-            type: string
-      summary: "Returns all posts market with tag identified by slug"
-      description: ""
-      responses:
-        '200':
-          description: Ok
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PostsList'
-        '500':
-          description: Internal Server Error
  
-  '/comments/':
+  '/posts/{id}/comments':
     post:
       tags:
-        - comments
+        - posts
       summary: "Add new comment to post"
       description: ""
       parameters:
-        - name: "post_id"
-          in: query
+        - name: "id"
+          in: path
           required: true
           schema:
             type: integer
@@ -328,3 +318,7 @@ paths:
                 $ref: '#/components/schemas/TagsList'
         '500':
           description: Internal Server Error
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/Painted-Black/BlogAPI/1.0.0

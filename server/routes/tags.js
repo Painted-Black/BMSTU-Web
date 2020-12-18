@@ -2,17 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 // Подключаем модели
-const Tags = require('../models/tags.js');
+const Tag = require('../models/tag.js');
 
 router.get('/', (req, res) => {
-	Tags.findAll()
-	.then(rows => {
-		res.status(200).json(rows)
+	Tag.getAll((err, tags) => {
+		if (err) return res.sendStatus(500);
+		if (tags) res.status(200).json(tags)
 	})
-	.catch(e => {
-		res.sendStatus(500);
-		console.log(e)
-	})
+
 });
 
 module.exports = router;

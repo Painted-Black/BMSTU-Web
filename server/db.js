@@ -1,9 +1,9 @@
-// Импортируем именно класс Sequelize из библиотеки
-const { Sequelize } = require("sequelize");
-const { connectionString } = require("./config");
+const pgp = require('pg-promise')();
+const connectionString = require('./config').connectionString;
+const connection = pgp(connectionString);
 
-// создаем новое подключение
-const sequelize = new Sequelize(connectionString);
+connection.connect()
+	.then(obj => obj.done())
+	.catch(err => console.error(err));
 
-// импортируем для дальнейшей работы с ним
-module.exports = sequelize;
+module.exports = connection;
